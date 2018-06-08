@@ -23,7 +23,7 @@ class TensorboardNotFoundError(ProcessError):
     pass
 
 
-def run_tensorboard(logdir, listen_on="0.0.0.0", port=80, tensorboard_args=None, timeout=60):
+def run_tensorboard(logdir, listen_on="0.0.0.0", port=80, tensorboard_args=None, timeout=240):
     """
     Launch a new TensorBoard instance.
 
