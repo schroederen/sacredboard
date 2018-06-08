@@ -23,7 +23,7 @@ class TensorboardNotFoundError(ProcessError):
     pass
 
 
-def run_tensorboard(logdir, listen_on="0.0.0.0", port=5001, tensorboard_args=None, timeout=10):
+def run_tensorboard(logdir, listen_on="0.0.0.0", port=80, tensorboard_args=None, timeout=10):
     """
     Launch a new TensorBoard instance.
 
@@ -52,7 +52,7 @@ def run_tensorboard(logdir, listen_on="0.0.0.0", port=5001, tensorboard_args=Non
     start = time.time()
     data = ""
     while time.time() - start < timeout:
-        line = tensorboard_instance.read_line_stderr(time_limit=timeout)
+        line = tensorboard_instance.read_line_stdout(time_limit=timeout)
         data += line
         if "at http://" in line:
             port = parse_port_from_tensorboard_output(line)
