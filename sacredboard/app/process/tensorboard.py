@@ -38,6 +38,7 @@ def run_tensorboard(logdir, listen_on="0.0.0.0", port=80, tensorboard_args=None,
     :raise TensorboardNotFoundError
     :raise TimeoutError
     """
+	stop_all_tensorboards()
     if tensorboard_args is None:
         tensorboard_args = []
     tensorboard_instance = Process.create_process(
